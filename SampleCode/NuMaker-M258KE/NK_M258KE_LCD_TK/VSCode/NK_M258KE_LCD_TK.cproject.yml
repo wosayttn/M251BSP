@@ -1,6 +1,6 @@
 project:
   packs:
-    - pack: Nuvoton::NuMicro_DFP
+    - pack: Nuvoton::NuMicroM23_DFP
   setups:
     - output:
         # bin, elf, hex, lib
@@ -23,7 +23,7 @@ project:
       misc:
         - for-compiler: AC6
           C:
-            - -std=c11 -fno-rtti -funsigned-char -fshort-enums -fshort-wchar -ffunction-sections -fdata-sections -w
+            - -std=c11 -fno-rtti -funsigned-char -fshort-enums -fshort-wchar -ffunction-sections -fdata-sections -Wall
             - -D__MICROLIB
           ASM:
             - -masm=auto
@@ -36,6 +36,7 @@ project:
           Link:
             - -mthumb -fmessage-length=0 -fsigned-char --specs=nano.specs --specs=nosys.specs
             - -Wl,--gc-sections,-Map="$elf()$.map"
+            - -Wl,--no-warn-rwx-segments
     - setup: Options for Calibration
       for-context: .Calibration
       output :
@@ -55,7 +56,7 @@ project:
       misc:
         - for-compiler: AC6
           C:
-            - -std=c11 -fno-rtti -funsigned-char -fshort-enums -fshort-wchar -ffunction-sections -fdata-sections -w
+            - -std=c11 -fno-rtti -funsigned-char -fshort-enums -fshort-wchar -ffunction-sections -fdata-sections -Wall
             - -D__MICROLIB
           ASM:
             - -masm=auto
@@ -68,6 +69,7 @@ project:
           Link:
             - -mthumb -fmessage-length=0 -fsigned-char --specs=nano.specs --specs=nosys.specs
             - -Wl,--gc-sections,-Map="$elf()$.map"
+            - -Wl,--no-warn-rwx-segments
   linker:
     - script: TK_FreeRun.sct
       for-context: .FreeRun
@@ -88,6 +90,8 @@ project:
         - file: ../../../../Library/Device/Nuvoton/M251/Source/ARM/startup_M251.c
           for-compiler: AC6
         - file: ../../../../Library/Device/Nuvoton/M251/Source/GCC/startup_M251.S
+          for-compiler: GCC
+        - file: ../../../../Library/Device/Nuvoton/M251/Source/GCC/_syscalls.c
           for-compiler: GCC
     - group: Library
       for-context: .FreeRun

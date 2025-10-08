@@ -76,7 +76,6 @@ extern int32_t g_I2C_i32ErrCode;
  *    @param[in]    i2c        Specify I2C port
  *    @param[in]    u8Ctrl     A byte writes to I2C control register
  *
- *
  *    @details      Set I2C_CTL register to control I2C bus conditions of START, STOP, SI, ACK.
  *    \hideinitializer
  */
@@ -87,7 +86,6 @@ extern int32_t g_I2C_i32ErrCode;
  *
  *    @param[in]    i2c        Specify I2C port
  *
- *
  *    @details      Set the I2C bus START condition in I2C_CTL register.
  *    \hideinitializer
  */
@@ -97,7 +95,6 @@ extern int32_t g_I2C_i32ErrCode;
  *    @brief        The macro is used to wait I2C bus status get ready
  *
  *    @param[in]    i2c        Specify I2C port
- *
  *
  *    @details      When a new status is presented of I2C bus, the SI flag will be set in I2C_CTL register.
  *    \hideinitializer
@@ -111,7 +108,7 @@ extern int32_t g_I2C_i32ErrCode;
  *
  *    @return       A byte of I2C data register
  *
- *    @details      I2C controller read data from bus and save it in I2CDAT register.
+ *    @details      I2C controller read data from bus and save it in I2C_DAT register.
  *    \hideinitializer
  */
 #define I2C_GET_DATA(i2c)   ((i2c)->DAT)
@@ -121,7 +118,6 @@ extern int32_t g_I2C_i32ErrCode;
  *
  *    @param[in]    i2c         Specify I2C port
  *    @param[in]    u8Data      A byte that writes to data register
- *
  *
  *    @details      When write a data to I2C_DAT register, the I2C controller will shift it to I2C bus.
  *    \hideinitializer
@@ -208,7 +204,6 @@ extern int32_t g_I2C_i32ErrCode;
  * @param[in]  i2c              Specify I2C port
  * @param[in]  u32PktSize       Transmit / Receive bytes
  *
- *
  * @details    The transmission or receive byte number in one transaction when PECEN is set. The maximum is 255 bytes.
  * \hideinitializer
  */
@@ -218,7 +213,6 @@ extern int32_t g_I2C_i32ErrCode;
  * @brief      Enable SMBus Alert function
  *
  * @param[in]  i2c              Specify I2C port
- *
  *
  * @details    Device Mode(BMHEN=0): If ALERTEN(I2C_BUSCTL[4]) is set, the Alert pin will pull lo, and reply ACK when get ARP from host
  *             Host   Mode(BMHEN=1): If ALERTEN(I2C_BUSCTL[4]) is set, the Alert pin is supported to receive alert state(Lo trigger)
@@ -231,7 +225,6 @@ extern int32_t g_I2C_i32ErrCode;
  *
  * @param[in]  i2c              Specify I2C port
  *
- *
  * @details    Device Mode(BMHEN=0): If ALERTEN(I2C_BUSCTL[4]) is clear, the Alert pin will pull hi, and reply NACK when get ARP from host
  *             Host   Mode(BMHEN=1): If ALERTEN(I2C_BUSCTL[4]) is clear, the Alert pin is not supported to receive alert state(Lo trigger)
  * \hideinitializer
@@ -242,7 +235,6 @@ extern int32_t g_I2C_i32ErrCode;
  * @brief      Set SMBus SUSCON pin is output mode
  *
  * @param[in]  i2c              Specify I2C port
- *
  *
  * @details    This function to set SUSCON(I2C_BUSCTL[6]) pin is output mode.
  *
@@ -255,7 +247,6 @@ extern int32_t g_I2C_i32ErrCode;
  *
  * @param[in]  i2c              Specify I2C port
  *
- *
  * @details    This function to set SUSCON(I2C_BUSCTL[6]) pin is input mode.
  *
  * \hideinitializer
@@ -266,7 +257,6 @@ extern int32_t g_I2C_i32ErrCode;
  * @brief      Set SMBus SUSCON pin output high state
  *
  * @param[in]  i2c              Specify I2C port
- *
  *
  * @details    This function to set SUSCON(I2C_BUSCTL[6]) pin is output hi state.
  * \hideinitializer
@@ -279,7 +269,6 @@ extern int32_t g_I2C_i32ErrCode;
  *
  * @param[in]  i2c              Specify I2C port
  *
- *
  * @details    This function to set SUSCON(I2C_BUSCTL[6]) pin is output lo state.
  * \hideinitializer
  */
@@ -289,7 +278,6 @@ extern int32_t g_I2C_i32ErrCode;
  * @brief      Enable SMBus Acknowledge control by manual
  *
  * @param[in]  i2c              Specify I2C port
- *
  *
  * @details    The 9th bit can response the ACK or NACK according the received data by user. When the byte is received, SCLK line stretching to low between the 8th and 9th SCLK pulse.
  * \hideinitializer
@@ -301,7 +289,6 @@ extern int32_t g_I2C_i32ErrCode;
  *
  * @param[in]  i2c              Specify I2C port
  *
- *
  * @details    Disable acknowledge response control by user.
  * \hideinitializer
  */
@@ -311,7 +298,6 @@ extern int32_t g_I2C_i32ErrCode;
  * @brief      Enable SMBus Acknowledge manual interrupt
  *
  * @param[in]  i2c              Specify I2C port
- *
  *
  * @details    This function is used to enable SMBUS acknowledge manual interrupt on the 9th clock cycle when SMBUS=1 and ACKMEN=1
  * \hideinitializer
@@ -323,7 +309,6 @@ extern int32_t g_I2C_i32ErrCode;
  *
  * @param[in]  i2c              Specify I2C port
  *
- *
  * @details    This function is used to disable SMBUS acknowledge manual interrupt on the 9th clock cycle when SMBUS=1 and ACKMEN=1
  * \hideinitializer
  */
@@ -333,7 +318,6 @@ extern int32_t g_I2C_i32ErrCode;
  * @brief      Enable SMBus PEC clear at REPEAT START
  *
  * @param[in]  i2c              Specify I2C port
- *
  *
  * @details    This function is used to enable the condition of REAEAT START can clear the PEC calculation.
  * \hideinitializer
@@ -345,7 +329,6 @@ extern int32_t g_I2C_i32ErrCode;
  *
  * @param[in]  i2c              Specify I2C port
  *
- *
  * @details    This function is used to disable the condition of Repeat START can clear the PEC calculation.
  * \hideinitializer
  */
@@ -353,8 +336,9 @@ extern int32_t g_I2C_i32ErrCode;
 
 /**
   * @brief      Enable RX PDMA function.
+  *
   * @param[in]  i2c The pointer of the specified I2C module.
-  * @return     None.
+  *
   * @details    Set RXPDMAEN bit of I2C_CTL1 register to enable RX PDMA transfer function.
   * \hideinitializer
   */
@@ -362,8 +346,9 @@ extern int32_t g_I2C_i32ErrCode;
 
 /**
   * @brief      Enable TX PDMA function.
+  *
   * @param[in]  i2c The pointer of the specified I2C module.
-  * @return     None.
+  *
   * @details    Set TXPDMAEN bit of I2C_CTL1 register to enable TX PDMA transfer function.
   * \hideinitializer
   */
@@ -371,8 +356,9 @@ extern int32_t g_I2C_i32ErrCode;
 
 /**
   * @brief      Disable RX PDMA transfer.
+  *
   * @param[in]  i2c The pointer of the specified I2C module.
-  * @return     None.
+  *
   * @details    Clear RXPDMAEN bit of I2C_CTL1 register to disable RX PDMA transfer function.
   * \hideinitializer
   */
@@ -380,8 +366,9 @@ extern int32_t g_I2C_i32ErrCode;
 
 /**
   * @brief      Disable TX PDMA transfer.
+  *
   * @param[in]  i2c The pointer of the specified I2C module.
-  * @return     None.
+  *
   * @details    Clear TXPDMAEN bit of I2C_CTL1 register to disable TX PDMA transfer function.
   * \hideinitializer
   */
@@ -389,8 +376,9 @@ extern int32_t g_I2C_i32ErrCode;
 
 /**
   * @brief      Enable PDMA stretch function.
+  *
   * @param[in]  i2c The pointer of the specified I2C module.
-  * @return     None.
+  *
   * @details    Enable this function is to stretch bus by hardware after PDMA transfer is done if SI is not cleared.
   * \hideinitializer
   */
@@ -398,8 +386,9 @@ extern int32_t g_I2C_i32ErrCode;
 
 /**
   * @brief      Disable PDMA stretch function.
+  *
   * @param[in]  i2c The pointer of the specified I2C module.
-  * @return     None.
+  *
   * @details    I2C will send STOP after PDMA transfers done automatically.
   * \hideinitializer
   */
@@ -407,8 +396,9 @@ extern int32_t g_I2C_i32ErrCode;
 
 /**
   * @brief      Reset PDMA function.
+  *
   * @param[in]  i2c The pointer of the specified I2C module.
-  * @return     None.
+  *
   * @details    I2C PDMA engine will be reset after this function is called.
   * \hideinitializer
   */

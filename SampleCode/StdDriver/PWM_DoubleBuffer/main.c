@@ -30,6 +30,9 @@ void PWM0_P0_IRQHandler(void)
 {
     static int u8Toggle = 0;
 
+    /* Clear channel 0 period interrupt flag */
+    PWM_ClearPeriodIntFlag(PWM0, 0);
+
     /* Update PWM0 channel 0 period and duty */
     if (u8Toggle == 0)
     {
@@ -45,8 +48,6 @@ void PWM0_P0_IRQHandler(void)
     }
 
     u8Toggle ^= 1;
-    /* Clear channel 0 period interrupt flag */
-    PWM_ClearPeriodIntFlag(PWM0, 0);
 }
 
 void SYS_Init(void)

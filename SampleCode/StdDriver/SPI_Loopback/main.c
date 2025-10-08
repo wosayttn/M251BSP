@@ -131,7 +131,7 @@ int main(void)
             SPI_WRITE_TX(SPI0, g_au32SourceData[u32DataCount]);
 
             /* Check SPI0 busy status */
-            while (SPI_IS_BUSY(SPI0));
+            while (SPI_IS_BUSY(SPI0)) {}
 
             /* Read received data */
             g_au32DestinationData[u32DataCount] = SPI_READ_RX(SPI0);

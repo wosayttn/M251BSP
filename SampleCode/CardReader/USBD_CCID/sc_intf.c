@@ -767,6 +767,7 @@ uint8_t Intf_Escape(int32_t intf,
                     uint8_t *pBlockBuffer,
                     uint32_t *pBlockSize)
 {
+    (void)(pBlockBuffer);
 
     if (intf != 0 && intf != 1)
         return SLOTERR_BAD_SLOT;
@@ -786,6 +787,7 @@ uint8_t Intf_Escape(int32_t intf,
   */
 uint8_t Intf_SetClock(int32_t intf, uint8_t u32Cmd)
 {
+    (void)(u32Cmd);
 
     if (intf != 0 && intf != 1)
         return SLOTERR_BAD_SLOT;
@@ -811,6 +813,7 @@ uint8_t Intf_GetSlotStatus(int32_t intf)
     uint8_t Ret = 0x00;
     SC_T *sc;
 
+    (void)(intf);
     //    if(intf != 0 && intf != 1)
     //        return SLOTERR_BAD_SLOT;
 
@@ -877,6 +880,7 @@ uint8_t Intf_AbortTxRx(int32_t intf)
 {
     SC_T *sc;
 
+    (void)(intf);
     //    if(intf != 0 && intf != 1)
     //        return SLOTERR_BAD_SLOT;
 

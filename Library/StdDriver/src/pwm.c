@@ -34,6 +34,7 @@
  */
 uint32_t PWM_ConfigCaptureChannel(PWM_T *pwm, uint32_t u32ChannelNum, uint32_t u32UnitTimeNsec, uint32_t u32CaptureEdge)
 {
+    (void) u32CaptureEdge;
     uint32_t u32Src;
     uint32_t u32PWMClockSrc;
     uint32_t u32NearestUnitTimeNsec;
@@ -348,6 +349,7 @@ void PWM_DisableADCTrigger(PWM_T *pwm, uint32_t u32ChannelNum)
  */
 void PWM_ClearADCTriggerFlag(PWM_T *pwm, uint32_t u32ChannelNum, uint32_t u32Condition)
 {
+    (void) u32Condition;
     (pwm)->STATUS = (PWM_STATUS_EADCTRG0_Msk << u32ChannelNum);
 }
 
@@ -768,6 +770,7 @@ uint32_t PWM_GetFaultBrakeIntFlag(PWM_T *pwm, uint32_t u32BrakeSource)
  */
 void PWM_EnablePeriodInt(PWM_T *pwm, uint32_t u32ChannelNum,  uint32_t u32IntPeriodType)
 {
+    (void) u32IntPeriodType;
     (pwm)->INTEN0 |= (PWM_INTEN0_PIEN0_Msk << ((u32ChannelNum >> 1UL) << 1UL));
 }
 

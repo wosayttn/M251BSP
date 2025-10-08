@@ -30,6 +30,9 @@ void PWM0_P0_IRQHandler(void)
 {
     static uint32_t u32Cnt;
 
+    /* Clear channel 0 period interrupt flag */
+    PWM_ClearPeriodIntFlag(PWM0, 0);
+
     /* Channel 0 frequency is 6000Hz, every 1 second enter this IRQ handler 6000 times. */
     if (++u32Cnt == 6000)
     {
@@ -43,9 +46,6 @@ void PWM0_P0_IRQHandler(void)
         u32Out ^= 1;
         u32Cnt = 0;
     }
-
-    /* Clear channel 0 period interrupt flag */
-    PWM_ClearPeriodIntFlag(PWM0, 0);
 }
 
 void SYS_Init(void)

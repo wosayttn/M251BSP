@@ -15,9 +15,9 @@
 #define CLK_SOURCE  CLK_HIRC
 #define PLL_CLOCK   FREQ_48MHZ
 
-#define PD_MODE   0     // Power-down mode
-#define FWPD_MODE 1     // Fast wake up
-#define DPD_MODE  2     // Deep Power-down mode
+#define PD_MODE   0UL     // Power-down mode
+#define FWPD_MODE 1UL     // Fast wake up
+#define DPD_MODE  2UL     // Deep Power-down mode
 
 #define T_60SEC   60    //60Sec
 #define T_60MIN   60    //60Min
@@ -91,9 +91,9 @@ void EnterToPowerDown(uint32_t u32PDMode)
 
     if (u32PDMode == PD_MODE)
         CLK->PMUCTL |= CLK_PMUCTL_PDMSEL_PD;    //Power down
-    else if ((u32PDMode == FWPD_MODE))
+    else if (u32PDMode == FWPD_MODE)
         CLK->PMUCTL |= CLK_PMUCTL_PDMSEL_FWPD;  //fast up
-    else if ((u32PDMode == DPD_MODE))
+    else if (u32PDMode == DPD_MODE)
         CLK->PMUCTL |= CLK_PMUCTL_PDMSEL_DPD | CLK_PMUCTL_RTCWKEN_Msk; // DPD(Deep power dwon) Mode and RTC WK enable
 
     CLK->PWRCTL &= ~(CLK_PWRCTL_PDEN_Msk | CLK_PWRCTL_PDWKIEN_Msk);

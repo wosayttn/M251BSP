@@ -1,6 +1,6 @@
 # M251/M252/M254/M256/M258 Series CMSIS BSP
 
-To experience the powerful features of M251/M252/M254/M256/M258 series in few minutes, please select the sample code to download and execute on their NuMaker boards. Open the project files to build them with Keil® MDK, IAR, NuEclipse or VSCode, and then download and trace them on the NuMaker board to see how it works.
+To experience the powerful features of M251/M252/M254/M256/M258 series in few minutes, please select the sample code to download and execute on their NuMaker boards. Open the project files to build them with Keil® MDK, IAR, NuEclipse or VS Code, and then download and trace them on the NuMaker board to see how it works.
 
 
 ## .\Document\
@@ -13,6 +13,9 @@ To experience the powerful features of M251/M252/M254/M256/M258 series in few mi
 
 - NuMicro M251_252_254_256_258 Series CMSIS BSP Revision History.pdf<br>
 	This document shows the revision history of M251/M252/M254/M256/M258 BSP.
+
+- VSCode Quick Start Guide
+	This documents guide to install, configure and use VS Code.
 
 
 ## .\Library\
@@ -53,19 +56,19 @@ To experience the powerful features of M251/M252/M254/M256/M258 series in few mi
 	It also shows the Link Register (LR), which contains the return address of the last function call. It can show the status where CPU comes from to get to this point.
 
 - ISP<br>
-	Sample codes for In-System-Programming.
+	Sample code for In-System-Programming.
 
 - Level1_Training<br>
 	Level 1 training sample code.
 
 - NuMaker-M256SD<br>
-	Sample codes for NuMaker-M256SD board.
+	Sample code for NuMaker-M256SD board.
 
 - NuMaker-M258KE<br>
-	Sample codes for NuMaker-M258KE board.
+	Sample code for NuMaker-M258KE board.
 
 - NuMaker-M258KG<br>
-	Sample codes for NuMaker-M258KG board.
+	Sample code for NuMaker-M258KG board.
 
 - PowerManagement<br>
 	Power management sample code.
@@ -87,6 +90,7 @@ To experience the powerful features of M251/M252/M254/M256/M258 series in few mi
 
 - FreeRTOS<br>
 	FreeRTOS porting for M251/M252/M254/M256/M258 series MCU.
+
 
 ## .\Tool\
 

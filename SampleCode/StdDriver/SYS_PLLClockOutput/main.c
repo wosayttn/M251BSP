@@ -35,7 +35,7 @@ void BOD_IRQHandler(void)
 /*---------------------------------------------------------------------------------------------------------*/
 #define PI_NUM  256
 int32_t ai32F[PI_NUM + 1];
-uint32_t au32PiTbl[19] =
+int32_t au32PiTbl[19] =
 {
     3141,
     5926,
@@ -91,7 +91,7 @@ int32_t Pi(void)
 
 void Delay(uint32_t u32X)
 {
-    int32_t i32Idx;
+    uint32_t i32Idx;
 
     for (i32Idx = 0; i32Idx < u32X; i32Idx++)
     {
@@ -110,7 +110,7 @@ uint32_t g_au32HCLKSetting[] =
 
 void SYS_PLL_Test(void)
 {
-    int32_t  i32Idx;
+    uint32_t  i32Idx;
 
     /*---------------------------------------------------------------------------------------------------------*/
     /* PLL clock configuration test                                                                            */

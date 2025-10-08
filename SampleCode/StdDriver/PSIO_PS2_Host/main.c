@@ -39,7 +39,7 @@ void PSIO_IRQHandler(void)
         printf("Unknown interrupt occur!!!\n");
     }
 
-    if ((PSIO_PS2_GET_STATUS() == eHOST_READ) | (PSIO_PS2_GET_STATUS() == eHOST_READY_TO_READ))
+    if ((PSIO_PS2_GET_STATUS() == eHOST_READ) || (PSIO_PS2_GET_STATUS() == eHOST_READY_TO_READ))
     {
         static uint32_t u32RxBuffer = 0;
 

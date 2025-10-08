@@ -262,6 +262,8 @@ void PSIO_NEC_Open(S_PSIO_NEC_CFG *pConfig)
 /*---------------------------------------------------------------------------------------------------------*/
 void PSIO_NEC_Close(S_PSIO_NEC_CFG *pConfig)
 {
+		(void)pConfig;
+	
     /* Disable PSIO corresponding NVIC bit */
     NVIC_DisableIRQ(PSIO_IRQn);
 

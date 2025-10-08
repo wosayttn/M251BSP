@@ -1,7 +1,7 @@
 /**************************************************************************//**
  * @file     LCD_NK.c
  * @version  V1.00
- * @brief    LCD Initial & Frame config.
+ * @brief    LCD Initial & Frame config on RHE6616TP01(8-COM, 40-SEG, 1/4 Bias) LCD.
  *
  * SPDX-License-Identifier: Apache-2.0
  * @copyright (C) 2022 Nuvoton Technology Corp. All rights reserved.

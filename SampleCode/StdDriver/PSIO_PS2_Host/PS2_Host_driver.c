@@ -186,6 +186,8 @@ void PSIO_PS2_Open(S_PSIO_PS2 *psConfig)
 
 void PSIO_PS2_Close(S_PSIO_PS2 *psConfig)
 {
+		(void)psConfig;
+	
     /* Disable interrupt 0 */
     PSIO_DISABLE_INT(PSIO, PSIO_INTEN_CON0IE_Msk);
 

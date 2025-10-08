@@ -718,19 +718,19 @@
                 </option>
                 <option>
                     <name>IlinkRawBinaryFile</name>
-                    <state></state>
+                    <state>$PROJ_DIR$\FMC_IAP_LDROM.bin</state>
                 </option>
                 <option>
                     <name>IlinkRawBinarySymbol</name>
-                    <state></state>
+                    <state>loaderImage1Base</state>
                 </option>
                 <option>
                     <name>IlinkRawBinarySegment</name>
-                    <state></state>
+                    <state>LoaderImage</state>
                 </option>
                 <option>
                     <name>IlinkRawBinaryAlign</name>
-                    <state></state>
+                    <state>4</state>
                 </option>
                 <option>
                     <name>IlinkDefines</name>
@@ -802,12 +802,11 @@
                 </option>
                 <option>
                     <name>IlinkUseExtraOptions</name>
-                    <state>1</state>
+                    <state>0</state>
                 </option>
                 <option>
                     <name>IlinkExtraOptions</name>
-                    <state>--image_input $PROJ_DIR$\FMC_IAP_LDROM.bin,loaderImage1Base,.bin_image,4</state>
-                    <state>--image_input $PROJ_DIR$\dummy.end,loaderImage1Limit,.bin_image,4</state>
+                    <state></state>
                 </option>
                 <option>
                     <name>IlinkLowLevelInterfaceSlave</name>

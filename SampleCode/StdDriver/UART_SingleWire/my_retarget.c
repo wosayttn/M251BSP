@@ -101,6 +101,7 @@ enum { r0, r1, r2, r3, r12, lr, pc, psr};
  */
 static void DumpStack(uint32_t stack[])
 {
+    (void)stack;
     /*
         printf("r0 =0x%x\n", stack[r0]);
         printf("r1 =0x%x\n", stack[r1]);
@@ -174,6 +175,9 @@ __attribute__((weak)) void HardFault_Handler(void)
 int32_t SH_Return(int32_t n32In_R0, int32_t n32In_R1, int32_t *pn32Out_R0);
 int32_t SH_Return(int32_t n32In_R0, int32_t n32In_R1, int32_t *pn32Out_R0)
 {
+    (void)n32In_R0;
+    (void)n32In_R1;
+    (void)pn32Out_R0;
     return 0;
 }
 
@@ -242,10 +246,8 @@ uint32_t ProcessHardFault(uint32_t lr, uint32_t msp, uint32_t psp)
     printf("  HardFault!\n\n");
     DumpStack(sp);
 
-    /* Or *sp to remove compiler warning */
-    while (1U | *sp) {}
-
-    return lr;
+    /* Halt here */
+    while (1U);
 }
 
 
@@ -526,6 +528,7 @@ void _ttywrch(int ch)
  */
 int fputc(int ch, FILE *stream)
 {
+    (void)stream;
     SendChar(ch);
     return ch;
 }
@@ -583,6 +586,7 @@ int _read(int fd, char *ptr, int len)
  */
 int fgetc(FILE *stream)
 {
+    (void)stream;
     return ((int)GetChar());
 }
 
@@ -603,6 +607,7 @@ int fgetc(FILE *stream)
  */
 int ferror(FILE *stream)
 {
+    (void)stream;
     return EOF;
 }
 

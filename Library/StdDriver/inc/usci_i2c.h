@@ -89,8 +89,17 @@ enum UI2C_SLAVE_EVENT
 #define UI2C_ERR_INT_MASK          (0x020U)    /*!< Error interrupt mask \hideinitializer */
 #define UI2C_ACK_INT_MASK          (0x040U)    /*!< Acknowledge interrupt mask \hideinitializer */
 
+/*---------------------------------------------------------------------------------------------------------*/
+/* USCI_I2C Define Error Code                                                                              */
+/*---------------------------------------------------------------------------------------------------------*/
+#define UI2C_TIMEOUT               SystemCoreClock  /*!< UI2C time-out counter (1 second time-out) \hideinitializer */
+#define UI2C_OK                    ( 0L)            /*!< UI2C operation OK \hideinitializer */
+#define UI2C_ERR_FAIL              (-1L)            /*!< UI2C operation failed \hideinitializer */
+#define UI2C_ERR_TIMEOUT           (-2L)            /*!< UI2C operation abort due to timeout error \hideinitializer */
+
 /** @} end of group USCI_I2C_EXPORTED_CONSTANTS */
 
+extern int32_t g_UI2C_i32ErrCode;
 
 /** @addtogroup USCI_I2C_EXPORTED_FUNCTIONS USCI_I2C Exported Functions
   @{
@@ -102,7 +111,6 @@ enum UI2C_SLAVE_EVENT
  *    @param[in]    ui2c      The pointer of the specified USCI_I2C module.
  *    @param[in]    u8Ctrl    Set the register value of USCI_I2C control register.
  *
- *
  *    @details      Set UI2C_PROTCTL register to control USCI_I2C bus conditions of START, STOP, SI, ACK.
  *    \hideinitializer
  */
@@ -113,7 +121,6 @@ enum UI2C_SLAVE_EVENT
  *
  *    @param[in]    ui2c      The pointer of the specified USCI_I2C module.
  *
- *
  *    @details      Set the USCI_I2C bus START condition in UI2C_PROTCTL register.
  *    \hideinitializer
  */
@@ -123,7 +130,6 @@ enum UI2C_SLAVE_EVENT
  *    @brief        This macro only set STOP bit to the control register of USCI_I2C module
  *
  *    @param[in]    ui2c      The pointer of the specified USCI_I2C module.
- *
  *
  *    @details      Set the USCI_I2C bus STOP condition in UI2C_PROTCTL register.
  *    \hideinitializer
@@ -147,7 +153,6 @@ enum UI2C_SLAVE_EVENT
  *
  *    @param[in]    ui2c     The pointer of the specified USCI_I2C module.
  *    @param[in]    u8Data   The data which will be written to data register of USCI_I2C module.
- *
  *
  *    @details      Write a byte data value of UI2C_TXDAT register, then sends address or data to USCI I2C bus
  *    \hideinitializer
@@ -185,7 +190,6 @@ enum UI2C_SLAVE_EVENT
  *
  *    @param[in]    ui2c     The pointer of the specified USCI_I2C module.
  *
- *
  *    @details      If USCI_I2C wake-up flag is set, use this macro to clear it.
  *    \hideinitializer
  */
@@ -196,7 +200,6 @@ enum UI2C_SLAVE_EVENT
  *
  *    @param[in]    ui2c     The pointer of the specified USCI_I2C module.
  *
- *
  *    @details      The UI2C_I2C is 7-bit address mode, when disable USCI_I2C 10-bit address match function.
  *    \hideinitializer
  */
@@ -206,7 +209,6 @@ enum UI2C_SLAVE_EVENT
  *    @brief        This macro enables the 10-bit address mode
  *
  *    @param[in]    ui2c     The pointer of the specified USCI_I2C module.
- *
  *
  *    @details      To enable USCI_I2C 10-bit address match function.
  *    \hideinitializer
@@ -227,6 +229,7 @@ enum UI2C_SLAVE_EVENT
 
 /**
  *    @brief        This macro clears specified protocol interrupt flag
+ *
  *    @param[in]    ui2c     The pointer of the specified USCI_I2C module.
  *    @param[in]    u32IntTypeFlag Interrupt Type Flag, should be
  *                                  - \ref UI2C_PROTSTS_ACKIF_Msk
@@ -244,6 +247,7 @@ enum UI2C_SLAVE_EVENT
 
 /**
  *    @brief        This macro enables specified protocol interrupt
+ *
  *    @param[in]    ui2c     The pointer of the specified USCI_I2C module.
  *    @param[in]    u32IntSel Interrupt Type, should be
  *                                  - \ref UI2C_PROTIEN_ACKIEN_Msk
@@ -295,18 +299,18 @@ void UI2C_EnableTimeout(UI2C_T *ui2c, uint32_t u32TimeoutCnt);
 void UI2C_DisableTimeout(UI2C_T *ui2c);
 void UI2C_EnableWakeup(UI2C_T *ui2c, uint8_t u8WakeupMode);
 void UI2C_DisableWakeup(UI2C_T *ui2c);
-uint8_t UI2C_WriteByte(UI2C_T *ui2c, uint8_t u8SlaveAddr, const uint8_t u8Data);
-uint32_t UI2C_WriteMultiBytes(UI2C_T *ui2c, uint8_t u8SlaveAddr, const uint8_t *pu8Data, uint32_t u32WLen);
-uint8_t UI2C_WriteByteOneReg(UI2C_T *ui2c, uint8_t u8SlaveAddr, uint8_t u8DataAddr, const uint8_t u8Data);
-uint32_t UI2C_WriteMultiBytesOneReg(UI2C_T *ui2c, uint8_t u8SlaveAddr, uint8_t u8DataAddr, const uint8_t *pu8Data, uint32_t u32WLen);
-uint8_t UI2C_WriteByteTwoRegs(UI2C_T *ui2c, uint8_t u8SlaveAddr, uint16_t u16DataAddr, const uint8_t u8Data);
-uint32_t UI2C_WriteMultiBytesTwoRegs(UI2C_T *ui2c, uint8_t u8SlaveAddr, uint16_t u16DataAddr, const uint8_t *pu8Data, uint32_t u32WLen);
+uint8_t UI2C_WriteByte(UI2C_T *ui2c, uint8_t u8SlaveAddr, uint8_t data);
+uint32_t UI2C_WriteMultiBytes(UI2C_T *ui2c, uint8_t u8SlaveAddr, uint8_t *data, uint32_t u32wLen);
+uint8_t UI2C_WriteByteOneReg(UI2C_T *ui2c, uint8_t u8SlaveAddr, uint8_t u8DataAddr, uint8_t data);
+uint32_t UI2C_WriteMultiBytesOneReg(UI2C_T *ui2c, uint8_t u8SlaveAddr, uint8_t u8DataAddr, uint8_t *data, uint32_t u32wLen);
+uint8_t UI2C_WriteByteTwoRegs(UI2C_T *ui2c, uint8_t u8SlaveAddr, uint16_t u16DataAddr, uint8_t data);
+uint32_t UI2C_WriteMultiBytesTwoRegs(UI2C_T *ui2c, uint8_t u8SlaveAddr, uint16_t u16DataAddr, uint8_t *data, uint32_t u32wLen);
 uint8_t UI2C_ReadByte(UI2C_T *ui2c, uint8_t u8SlaveAddr);
-uint32_t UI2C_ReadMultiBytes(UI2C_T *ui2c, uint8_t u8SlaveAddr, uint8_t *pu8RData, uint32_t u32RLen);
+uint32_t UI2C_ReadMultiBytes(UI2C_T *ui2c, uint8_t u8SlaveAddr, uint8_t *rdata, uint32_t u32rLen);
 uint8_t UI2C_ReadByteOneReg(UI2C_T *ui2c, uint8_t u8SlaveAddr, uint8_t u8DataAddr);
-uint32_t UI2C_ReadMultiBytesOneReg(UI2C_T *ui2c, uint8_t u8SlaveAddr, uint8_t u8DataAddr, uint8_t *pu8RData, uint32_t u32RLen);
+uint32_t UI2C_ReadMultiBytesOneReg(UI2C_T *ui2c, uint8_t u8SlaveAddr, uint8_t u8DataAddr, uint8_t *rdata, uint32_t u32rLen);
 uint8_t UI2C_ReadByteTwoRegs(UI2C_T *ui2c, uint8_t u8SlaveAddr, uint16_t u16DataAddr);
-uint32_t UI2C_ReadMultiBytesTwoRegs(UI2C_T *ui2c, uint8_t u8SlaveAddr, uint16_t u16DataAddr, uint8_t *pu8RData, uint32_t u32RLen);
+uint32_t UI2C_ReadMultiBytesTwoRegs(UI2C_T *ui2c, uint8_t u8SlaveAddr, uint16_t u16DataAddr, uint8_t *rdata, uint32_t u32rLen);
 
 /** @} end of group USCI_I2C_EXPORTED_FUNCTIONS */
 

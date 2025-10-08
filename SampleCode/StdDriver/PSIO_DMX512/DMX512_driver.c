@@ -24,6 +24,8 @@ tPSIO_IRQHandler pfPSIO_IRQHandler = NULL;
 /* Decode DMX512 frame */
 E_DMX512_FRAME_TYPE  DMX512_FrameDecoder(S_PSIO_DMX512_CFG *psConfig, uint16_t *pu16Data)
 {
+		(void)psConfig;
+	
     /* Special pattern */
     switch(*pu16Data)
     {

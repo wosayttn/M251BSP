@@ -26,6 +26,8 @@ void TMR0_IRQHandler(void)
     {
         static uint32_t s_u32Toggle = 0;
 
+        TPWM_CLEAR_PERIOD_INT_FLAG(TIMER0);
+
         if (s_u32Toggle == 0)
         {
             /* Set PWM period to generate output frequency 36000 Hz */
@@ -44,7 +46,6 @@ void TMR0_IRQHandler(void)
         }
 
         s_u32Toggle ^= 1;
-        TPWM_CLEAR_PERIOD_INT_FLAG(TIMER0);
     }
 }
 

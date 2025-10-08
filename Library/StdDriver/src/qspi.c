@@ -156,9 +156,19 @@ uint32_t QSPI_Open(QSPI_T *qspi,
   */
 void QSPI_Close(QSPI_T *qspi)
 {
+    uint32_t u32RegLockLevel = SYS_IsRegLocked();
+
+    /* Unlock protected registers */
+    if (u32RegLockLevel) SYS_UnlockReg();
+
     /* Reset QSPI */
-    SYS->IPRST1 |= SYS_IPRST1_QSPI0RST_Msk;
-    SYS->IPRST1 &= ~SYS_IPRST1_QSPI0RST_Msk;
+    if (qspi == QSPI0)
+    {
+        SYS_ResetModule(QSPI0_RST);
+    }
+
+    /* Lock protected registers */
+    if (u32RegLockLevel) SYS_LockReg();
 }
 
 /**

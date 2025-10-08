@@ -45,14 +45,13 @@ ENTRY(Reset_Handler)
 
 SECTIONS
 {
-	. = 0xf800;
-    .text1 :
+
+    .tkdata :
 	{
-	   KEEP(./Inc/TK_Data.o (.rodata*))
+	   KEEP(*(.tkdata*)) 
 	} > FLASH1
 	
-	.= 0;
-	
+	. = ORIGIN(FLASH);
 	.text :
 	{
 		KEEP(*(.vectors))

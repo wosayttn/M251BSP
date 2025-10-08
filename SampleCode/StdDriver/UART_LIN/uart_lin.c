@@ -582,7 +582,7 @@ void LIN_RecvResponse(uint8_t *pu32RxBuf, uint8_t u8Len)
 /*---------------------------------------------------------------------------------------------------------*/
 void LIN_SendResponseWithByteCnt(int32_t i32CheckSumOption, uint32_t *pu32TxBuf, uint32_t u32ByteCnt)
 {
-    int32_t u32Loop;
+    uint32_t u32Loop;
 
     /* Prepare data */
     for (u32Loop = 0; u32Loop < u32ByteCnt; u32Loop++)

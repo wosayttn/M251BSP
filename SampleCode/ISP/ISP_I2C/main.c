@@ -15,6 +15,7 @@
 uint32_t Pclk0;
 uint32_t Pclk1;
 
+
 /* This is a dummy implementation to replace the same function in clk.c for size limitation. */
 uint32_t CLK_GetPLLClockFreq(void)
 {
@@ -96,9 +97,12 @@ _ISP:
     {
         if (bI2cDataReady == 1)
         {
+            /* Disable I2C IRQ until ParseCmd() is finished to prevent returning incomplete data prematurely */
+            NVIC_DisableIRQ(I2C0_IRQn);
             memcpy(cmd_buff, i2c_rcvbuf, 64);
             bI2cDataReady = 0;
             ParseCmd((unsigned char *)cmd_buff, 64);
+            NVIC_EnableIRQ(I2C0_IRQn);
         }
     }
 

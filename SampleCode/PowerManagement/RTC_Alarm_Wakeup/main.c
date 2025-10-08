@@ -71,9 +71,9 @@ void EnterToPowerDown(uint32_t u32PDMode)
 
     if (u32PDMode == PD_MODE)
         CLK->PMUCTL |= CLK_PMUCTL_PDMSEL_PD;    //Power down
-    else if ((u32PDMode == FWPD_MODE))
+    else if (u32PDMode == FWPD_MODE)
         CLK->PMUCTL |= CLK_PMUCTL_PDMSEL_FWPD;  //fast up
-    else if ((u32PDMode == DPD_MODE))
+    else if (u32PDMode == DPD_MODE)
         CLK->PMUCTL |= CLK_PMUCTL_PDMSEL_DPD | CLK_PMUCTL_RTCWKEN_Msk; // DPD(Deep power dwon) Mode and RTC WK enable
 
     CLK->PWRCTL &= ~(CLK_PWRCTL_PDEN_Msk | CLK_PWRCTL_PDWKIEN_Msk);

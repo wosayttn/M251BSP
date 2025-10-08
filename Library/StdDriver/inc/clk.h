@@ -279,14 +279,14 @@ extern "C"
 #define MODULE_NoMsk            0x0                   /*!< Not mask on MODULE index */
 #define NA                      MODULE_NoMsk          /*!< Not Available */
 
-#define MODULE_APBCLK_ENC(x)        (((x) & 0x03) << 30)   /*!< MODULE index, 0x0:AHBCLK, 0x1:APBCLK0, 0x2:APBCLK1 */
-#define MODULE_CLKSEL_ENC(x)        (((x) & 0x03) << 28)   /*!< CLKSEL offset on MODULE index, 0x0:CLKSEL0, 0x1:CLKSEL1, 0x2:CLKSEL2, 0x3:CLKSEL3 */
-#define MODULE_CLKSEL_Msk_ENC(x)    (((x) & 0x07) << 25)   /*!< CLKSEL mask offset on MODULE index */
-#define MODULE_CLKSEL_Pos_ENC(x)    (((x) & 0x1f) << 20)   /*!< CLKSEL position offset on MODULE index */
-#define MODULE_CLKDIV_ENC(x)        (((x) & 0x03) << 18)   /*!< APBCLK CLKDIV on MODULE index, 0x0:CLKDIV0, 0x1:CLKDIV1, 0x2:CLKDIV3, 0x3:CLKDIV4*/
-#define MODULE_CLKDIV_Msk_ENC(x)    (((x) & 0xff) << 10)   /*!< CLKDIV mask offset on MODULE index */
-#define MODULE_CLKDIV_Pos_ENC(x)    (((x) & 0x1f) <<  5)   /*!< CLKDIV position offset on MODULE index */
-#define MODULE_IP_EN_Pos_ENC(x)     (((x) & 0x1f) <<  0)   /*!< AHBCLK/APBCLK offset on MODULE index */
+#define MODULE_APBCLK_ENC(x)        ((uint32_t)(((x) & 0x03) << 30))   /*!< MODULE index, 0x0:AHBCLK, 0x1:APBCLK0, 0x2:APBCLK1 */
+#define MODULE_CLKSEL_ENC(x)        ((uint32_t)(((x) & 0x03) << 28))   /*!< CLKSEL offset on MODULE index, 0x0:CLKSEL0, 0x1:CLKSEL1, 0x2:CLKSEL2, 0x3:CLKSEL3 */
+#define MODULE_CLKSEL_Msk_ENC(x)    ((uint32_t)(((x) & 0x07) << 25))   /*!< CLKSEL mask offset on MODULE index */
+#define MODULE_CLKSEL_Pos_ENC(x)    ((uint32_t)(((x) & 0x1f) << 20))   /*!< CLKSEL position offset on MODULE index */
+#define MODULE_CLKDIV_ENC(x)        ((uint32_t)(((x) & 0x03) << 18))   /*!< APBCLK CLKDIV on MODULE index, 0x0:CLKDIV0, 0x1:CLKDIV1, 0x2:CLKDIV3, 0x3:CLKDIV4*/
+#define MODULE_CLKDIV_Msk_ENC(x)    ((uint32_t)(((x) & 0xff) << 10))   /*!< CLKDIV mask offset on MODULE index */
+#define MODULE_CLKDIV_Pos_ENC(x)    ((uint32_t)(((x) & 0x1f) <<  5))   /*!< CLKDIV position offset on MODULE index */
+#define MODULE_IP_EN_Pos_ENC(x)     ((uint32_t)(((x) & 0x1f) <<  0))   /*!< AHBCLK/APBCLK offset on MODULE index */
 
 
 //AHBCLK

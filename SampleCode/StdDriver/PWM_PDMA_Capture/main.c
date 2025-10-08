@@ -69,6 +69,9 @@ void CalPeriodTime(PWM_T *PWM, uint32_t u32Ch)
     uint16_t u16RisingTime, u16FallingTime, u16HighPeriod, u16LowPeriod, u16TotalPeriod;
     uint32_t u32TimeOutCount;
 
+    (void)PWM;
+    (void)u32Ch;
+
     g_u32IsTestOver = 0;
 
     /* setup timeout */

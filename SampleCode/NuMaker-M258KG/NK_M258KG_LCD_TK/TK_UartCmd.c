@@ -87,7 +87,7 @@ extern S_TKDEBOUNCE asPressedTouchKeys[];
 volatile unsigned char td_flag = 1;
 void TK_SendChars(uint8_t *pu8buf, uint32_t u32len)
 {
-    int i = 0;
+    uint32_t i = 0;
 
     for (i = 0; i < u32len; i++)
     {

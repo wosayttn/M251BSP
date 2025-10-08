@@ -12,6 +12,8 @@
 
 void PSIO_AT93C46D_CheckStatus(S_PSIO_AT93C46D *psConfig)
 {
+		(void)psConfig;
+			
     /* Set chip select pin to GPIO function */
     SetCSPinToGPIO();    
     
