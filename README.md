@@ -1,3 +1,6 @@
+![Eclipse](https://github.com/OpenNuvoton/M251BSP/actions/workflows/Eclipse.yml/badge.svg)
+![VSCode](https://github.com/OpenNuvoton/M251BSP/actions/workflows/VSCode.yml/badge.svg)
+
 # M251/M252/M254/M256/M258 Series CMSIS BSP
 
 To experience the powerful features of M251/M252/M254/M256/M258 series in few minutes, please select the sample code to download and execute on their NuMaker boards. Open the project files to build them with Keil® MDK, IAR, NuEclipse or VS Code, and then download and trace them on the NuMaker board to see how it works.
